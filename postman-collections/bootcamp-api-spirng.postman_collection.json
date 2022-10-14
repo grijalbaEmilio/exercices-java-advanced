@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "c34496a5-f89d-4332-85be-e74cb771a733",
+		"name": "bootcamp-api-spirng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21492236"
+	},
+	"item": [
+		{
+			"name": "{{url}}//bootcampers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Estado es 200\", ()=>{",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Oscary\",\n    \"age\" : 19\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/bootcampers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"bootcampers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/bootcampers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Estado es 200\", ()=>{",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Primer elemento es María\", ()=>{",
+							"    reply = pm.response.json()",
+							"    pm.expect(reply[0].name).to.eql(\"María\")",
+							"})",
+							"",
+							"pm.test(\"velocity response is minor to 10ms\", ()=>{",
+							"    pm.expect(pm.response.responseTime).to.be.below(10)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/bootcampers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"bootcampers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/bootcampers/Luis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/bootcampers/Luis",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"bootcampers",
+						"Luis"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
