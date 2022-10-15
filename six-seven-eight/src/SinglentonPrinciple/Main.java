@@ -4,19 +4,19 @@ public class Main {
     public static void main(String[] args) {
             
         /*
-                Singlenton:     se usa cuando no queremos que una clase no se intancie mas de una vez,
-                                como por ejemplo una aplicacion grafica.
+                Singlenton:     se usa cuando no queremos que una clase no se instancie más de una vez,
+                                como por ejemplo una aplicación gráfica.
                                 
-                Factory:        se usa para estandarizar la creacion de instancias de clases que implementan
-                                una determinada intefaz, un uso concreto puede ser cuando tenemos muchas clases
-                                que implementan una interfaz y con uso de este patron hariamos una unica forma
-                                crear objetos que implementen la abstraccion.
+                Factory:        se usa para estandarizar la creación de instancias de clases que implementan
+                                una determinada interfaz, un uso concreto puede ser cuando tenemos muchas clases
+                                que implementan una interfaz y con uso de este patron hariamos una única forma
+                                crear objetos que implementen la abstracción.
                 
-                Builder:        se usa cuando se tiene una clase con muchos metodos que requieren el uso constante
-                                de setters para su modificacion, y con este patron se crea un aforma mas comoda de 
+                Builder:        se usa cuando se tiene una clase con muchos métodos que requieren el uso constante
+                                de setters para su modificación, y con este patrón se crea un forma más cómoda de
                                 modificar atributos.
                                 
-                Prototype       es util cuando tenemos una clase de la que queremos sacar copias exactas pero sin
+                Prototype       es útil cuando tenemos una clase de la que queremos sacar copias exactas pero sin
                                 modificar la original.
                                 
         */
