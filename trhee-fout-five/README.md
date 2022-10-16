@@ -1,7 +1,7 @@
 ## aplicando 
 
 
-se refactorizó la funciron `reverseStringRecursive` de la siguiente forma
+se refactorizó la funcin `reverseStringRecursive` de la siguiente forma
 ```java
     public static String reverseString(String text, Integer textLength) {
         if (textLength == null) {
