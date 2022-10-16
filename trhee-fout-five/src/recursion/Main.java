@@ -1,7 +1,6 @@
 package recursion;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -10,13 +9,13 @@ public class Main {
         System.out.println("sum imperative 1 + 2 + 3 + 4 + 5 = " + addImperative(5));
         System.out.println("sum recursive 1 + 2 + 3 + 4 + 5 = " + addRecursive(5));
 
-        System.out.println("reverse the hola with recursion is: " + reverseStringRecursive("hola", "hola".length()));
+        System.out.println("reverse the hola with recursion is: " + reverseStringRecursive("hola", null));
         System.out.println("reverse the hola functional form is: " + reverseStringFunctional("hola"));
 
     }
 
-    public int factorialRecursive(int number){
-        if(number == 1){
+    public int factorialRecursive(int number) {
+        if (number == 1) {
             return 1;
         }
 
@@ -41,7 +40,11 @@ public class Main {
         return baseNumber + addRecursive(baseNumber - 1);
     }
 
-    public static String reverseStringRecursive(String text, int textLength) {
+    public static String reverseStringRecursive(String text, Integer textLength) {
+        if (textLength == null) {
+            textLength = text.length();
+        }
+
         String character = text.split("")[textLength - 1];
 
         if (textLength == 1) {
@@ -49,11 +52,12 @@ public class Main {
         }
 
         return character + reverseStringRecursive(text, textLength - 1);
-
     }
 
     public static String reverseStringFunctional(String text) {
-        Stream<String> textStream = Arrays.stream(text.split(""));
-        return textStream.reduce("", (x, y) -> y + x);
+        return Arrays
+                .stream(text.split(""))
+                .reduce("", (x, y) -> y + x);
+
     }
 }
