@@ -1,11 +1,18 @@
+package args;
+
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(args.length);
+        Options options = new Options();
 
-        System.out.println();
+        for (int i = 0; i < args.length; i += 2) {
+            options.addOption(args[i], args[i + 1]);
+        }
+
         try {
             division(3, 0);
 
@@ -20,7 +27,7 @@ public class Main {
         }
 
         try {
-            InputStream myFile = new FileInputStream("notFound/path");
+            InputStream myFile = new FileInputStream(options.getOption("--filePath"));
 
         } catch (FileNotFoundException e) {
             System.out.println("file exception: " + e.getMessage());
