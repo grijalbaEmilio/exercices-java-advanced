@@ -1,6 +1,6 @@
-## Runnin project
+## Running project
 
-### for register new Bootcamer
+### for register new bootcamper
     http://localhost:3000/bootcampers
 
 with `POST` method and next body
