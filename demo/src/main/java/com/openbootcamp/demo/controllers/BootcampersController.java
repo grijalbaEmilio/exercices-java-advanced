@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,8 +25,8 @@ public class BootcampersController {
     public BootcampersController(BootcamperService bootcamperService) {
         this.bootcamperService = bootcamperService;
 
-        this.bootcamperService.add(new Bootcamper("Luis", 20));
-        this.bootcamperService.add(new Bootcamper("María", 28));
+        bootcamperService.add(new Bootcamper("Luis", 20));
+        bootcamperService.add(new Bootcamper("María", 28));
     }
 
     @GET
@@ -38,15 +39,15 @@ public class BootcampersController {
     @Path("/bootcampers")
     @Produces("Application/json")
     public List<Bootcamper> listAll() {
-        return this.bootcamperService.getAll();
+        return bootcamperService.getAll();
 
     }
 
     @GET
-    @Path("/bootcampers/{name}")
+    @Path("/bootcampers/{id}")
     @Produces("Application/json")
-    public Bootcamper getOnebootcamper(@PathParam("name") String name) {
-        Bootcamper nn = this.bootcamperService.getOne(name);
+    public Bootcamper getOnebootcamper(@PathParam("id") int id) {
+        Bootcamper nn = bootcamperService.getOne(id);
 
         return nn;
     }
@@ -56,11 +57,29 @@ public class BootcampersController {
     @Produces("Application/json")
     @Consumes("Application/json")
     public Response pushBootcamper(Bootcamper bootcamper) {
-        this.bootcamperService.add(bootcamper);
+
+        boolean isCreate = bootcamperService.add(bootcamper);
+
+        if (!isCreate) {
+            return Response.status(400).build();
+        }
 
         return Response
                 .created(URI.create("/bootcampers/" + bootcamper.getName()))
                 .build();
+    }
+
+    @DELETE
+    @Path("/bootcampers/{id}")
+    @Consumes("Application/json")
+    public String dleteBootcamper(@PathParam("id")  int id) {
+        boolean isDelte = bootcamperService.delete(id);
+
+        if (!isDelte) {
+            return "No se pudo eliminar el bootcamper";
+        }
+        return "Bootcaper eliminado.";
+
     }
 
 }
